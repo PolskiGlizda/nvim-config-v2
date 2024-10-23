@@ -5,13 +5,14 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"clangd",
 		"pyright",
-		"tsserver",
+		"ts_ls",
 		"rust_analyzer",
 		"gopls",
 		"bashls",
 		"emmet_language_server",
 		"html",
 		"htmx",
+        "cssls",
 	},
 })
 -- lsp setup
@@ -29,9 +30,13 @@ lspconfig.pyright.setup({
 	filetypes = { "python" },
 	capabilities = capabilities,
 })
-lspconfig.tsserver.setup({
-	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	capabilities = capabilities,
+-- lspconfig.tsserver.setup({
+-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+-- 	capabilities = capabilities,
+-- })
+lspconfig.ts_ls.setup({
+    filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact"},
+    capabilities = capabilities,
 })
 lspconfig.rust_analyzer.setup({
 	filetypes = { "rust" },
@@ -63,6 +68,12 @@ lspconfig.emmet_language_server.setup({
 		"typescriptreact",
 	},
 	capabilities = capabilities,
+})
+lspconfig.cssls.setup({
+    filetypes = {
+        "css"
+    },
+    capabilities = capabilities,
 })
 lspconfig.htmx.setup({
 	filetypes = { "html" },
