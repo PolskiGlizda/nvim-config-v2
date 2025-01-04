@@ -12,6 +12,7 @@ return {
 				null_ls.builtins.formatting.gofumpt,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.pyink,
+                null_ls.builtins.formatting.fourmolu,
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format code" })
