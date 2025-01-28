@@ -28,4 +28,10 @@ return {
 			require("ultimate-autopair").setup()
 		end,
 	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		conffig = function()
+			require("nvim-treesitter.configs").setup()
+		end,
+	},
 }

@@ -8,6 +8,7 @@ return {
         "L3MON4D3/LuaSnip",
         "j-hui/fidget.nvim",
         "zbirenbaum/copilot.lua",
+        "saghen/blink.cmp",
     },
     opts = {
         servers = {
@@ -24,7 +25,7 @@ return {
             cssls = {},
             hls = {},
             tailwindcss = {},
-        }
+        },
     },
     config = function(_, opts)
         require("copilot").setup({
@@ -48,13 +49,14 @@ return {
                 "htmx",
                 "cssls",
                 "hls",
-                "tailwindcss"
+                "tailwindcss",
             },
         })
         local lspconfig = require("lspconfig")
-        for servers, config in pairs(opts.servers) do
-            config.capabilities = require("blink.cmp").get_lsp_capabilities()
-            lspconfig[servers].setup(config)
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
+        for servers in pairs(opts.servers) do
+            -- config.capabilities = capabilities
+            lspconfig[servers].setup({ capabilities = capabilities })
         end
         vim.diagnostic.config({
             -- update_in_insert = true,
